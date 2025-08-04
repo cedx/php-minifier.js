@@ -7,7 +7,8 @@
 			"request": "launch",
 			"type": "node",
 			"program": "${workspaceFolder}/bin/PhpMinifier.js",
-			"args": ["--mode=fast", "${input:input}"]
+			"args": ["--mode=fast", "${input:input}"],
+			"env": {"NODE_ENV": "development"}
 		},
 		{
 			"name": "Tests",

@@ -2,11 +2,12 @@ import gulp from "gulp";
 import {spawn} from "node:child_process";
 import {readdir, rm} from "node:fs/promises";
 import {join} from "node:path";
+import {env} from "node:process";
 import pkg from "./package.json" with {type: "json"};
 
 /** Builds the project. */
 export async function build() {
-	await run("npx tsc --build src/tsconfig.json");
+	await run(`npx tsc ${typeScriptArguments()}`);
 }
 
 /** Deletes all generated files. */
@@ -15,9 +16,10 @@ export async function clean() {
 	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(join("var", file), {recursive: true});
 }
 
-/** Builds the project in debug mode. */
-export async function debug() {
-	await run("npx tsc --build src/tsconfig.json --sourceMap");
+/** Packages the project. */
+export async function dist() {
+	env.NODE_ENV = "production"
+	await build();
 }
 
 /** Builds the documentation. */
@@ -40,12 +42,19 @@ export async function publish() {
 
 /** Runs the test suite. */
 export async function test() {
-	await debug();
+	env.NODE_ENV = "test";
+	await run(`npx tsc ${typeScriptArguments()}`);
 	await run("node --enable-source-maps --test");
 }
 
+/** Watches for file changes. */
+export async function watch() {
+	env.NODE_ENV = "development";
+	await run(`npx tsc ${typeScriptArguments({watch: true})}`);
+}
+
 /** The default task. */
-export default gulp.series(clean, build);
+export default gulp.series(clean, dist);
 
 /**
  * Spawns a new process using the specified command.
@@ -57,4 +66,16 @@ function run(command) {
 		const process = spawn(command, {shell: true, stdio: "inherit"});
 		process.on("close", code => code ? reject(Error(command)) : resolve());
 	});
+}
+
+/**
+ * Gets the TypeScript build arguments.
+ * @param {{watch?: boolean}} options Value indicating whether to enable file watching.
+ * @returns {string} The arguments to be passed to the TypeScript command line.
+ */
+function typeScriptArguments(options = {}) {
+	const args = ["--build", "src/tsconfig.json"];
+	if (env.NODE_ENV != "production") args.push("--sourceMap");
+	if (options.watch) args.push("--preserveWatchOutput", "--watch");
+	return args.join(" ");
 }
