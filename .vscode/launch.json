@@ -3,7 +3,7 @@
 	"configurations": [
 		{
 			"name": "Program",
-			"preLaunchTask": "Debug",
+			"preLaunchTask": "Build",
 			"request": "launch",
 			"type": "node",
 			"program": "${workspaceFolder}/bin/PhpMinifier.js",
