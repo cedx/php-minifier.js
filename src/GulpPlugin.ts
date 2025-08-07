@@ -6,6 +6,7 @@ import type File from "vinyl";
 import {FastTransformer} from "./FastTransformer.js";
 import type {ITransformer} from "./ITransformer.js";
 import {SafeTransformer} from "./SafeTransformer.js";
+import {TransformMode} from "./TransformMode.js";
 
 /**
  * Minifies PHP source code by removing comments and whitespace.
@@ -31,7 +32,7 @@ export class GulpPlugin extends Transform {
 
 		const binary = options.binary ?? "php";
 		this.#silent = options.silent ?? false;
-		this.#transformer = (options.mode ?? "safe") == "fast" ? new FastTransformer(binary) : new SafeTransformer(binary);
+		this.#transformer = (options.mode ?? TransformMode.Safe) == TransformMode.Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
 		const close = async (): Promise<void> => { await this.#transformer.close(); };
 		this.on("end", close).on("error", close); // eslint-disable-line @typescript-eslint/no-misused-promises
@@ -70,7 +71,7 @@ export type GulpPluginOptions = Partial<{
 	/**
 	 * The operation mode of the plugin.
 	 */
-	mode: "fast"|"safe";
+	mode: TransformMode;
 
 	/**
 	 * Value indicating whether to silence the plugin output.

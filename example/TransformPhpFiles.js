@@ -1,4 +1,4 @@
-import {FastTransformer, SafeTransformer} from "@cedx/php-minifier";
+import {FastTransformer, SafeTransformer, TransformMode} from "@cedx/php-minifier";
 import console from "node:console";
 import {mkdir, readdir, writeFile} from "node:fs/promises";
 import {dirname, extname, join, relative} from "node:path";
@@ -6,7 +6,7 @@ import {env, loadEnvFile} from "node:process";
 
 // Choose an appropriate transformer.
 loadEnvFile();
-await using transformer = env.PHPMINIFIER_MODE == "fast" ? new FastTransformer : new SafeTransformer;
+await using transformer = env.PHPMINIFIER_MODE == TransformMode.Fast ? new FastTransformer : new SafeTransformer;
 
 // Scan the input directory for PHP files.
 const input = "path/to/source/folder";

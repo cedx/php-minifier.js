@@ -3,6 +3,7 @@ import {GulpPlugin} from "@cedx/php-minifier";
 import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
+import {TransformMode} from "src/TransformMode.js";
 import File from "vinyl";
 
 /**
@@ -19,7 +20,7 @@ describe("GulpPlugin", () => {
 
 		describe("fast", () => {
 			const file = new File({path: resolve("res/Sample.php")});
-			const plugin = new GulpPlugin({mode: "fast", silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.Fast, silent: true});
 			after(() => plugin.emit("end"));
 
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(file, "utf8", (error, /** @type {File} */ chunk) => {
@@ -30,7 +31,7 @@ describe("GulpPlugin", () => {
 
 		describe("safe", () => {
 			const file = new File({path: resolve("res/Sample.php")});
-			const plugin = new GulpPlugin({mode: "safe", silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.Safe, silent: true});
 			after(() => plugin.emit("end"));
 
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(file, "utf8", (error, /** @type {File} */ chunk) => {

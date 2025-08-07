@@ -4,6 +4,7 @@ export * from "./FastTransformer.js";
 export * from "./GulpPlugin.js";
 export type * from "./ITransformer.js";
 export * from "./SafeTransformer.js";
+export * from "./TransformMode.js";
 
 /**
  * Creates a new Gulp plugin.

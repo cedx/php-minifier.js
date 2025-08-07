@@ -6,6 +6,7 @@ import {parseArgs} from "node:util";
 import pkg from "../package.json" with {type: "json"};
 import {FastTransformer} from "./FastTransformer.js";
 import {SafeTransformer} from "./SafeTransformer.js";
+import {TransformMode} from "./TransformMode.js";
 
 // The usage information.
 const usage = `
@@ -19,9 +20,9 @@ Arguments:
 	output           The path to the output directory.
 
 Options:
-	-b, --binary     The path to the PHP executable.
+	-b, --binary     The path to the PHP executable. Defaults to "php".
 	-e, --extension  The extension of the PHP files to process. Defaults to "php".
-	-m, --mode       The operation mode of the minifier. Defaults to "safe".
+	-m, --mode       The operation mode of the minifier. Defaults to "${TransformMode.Safe}".
 	-r, --recursive  Whether to process the input directory recursively.
 	-s, --silent     Whether to silence the minifier output.
 	-h, --help       Display this help.
@@ -37,7 +38,7 @@ try {
 		binary: {short: "b", type: "string", default: "php"},
 		extension: {short: "e", type: "string", default: "php"},
 		help: {short: "h", type: "boolean", default: false},
-		mode: {short: "m", type: "string", default: "safe"},
+		mode: {short: "m", type: "string", default: TransformMode.Safe},
 		recursive: {short: "r", type: "boolean", default: false},
 		silent: {short: "s", type: "boolean", default: false},
 		version: {short: "v", type: "boolean", default: false}
@@ -69,7 +70,7 @@ try {
 
 	// Process the PHP scripts.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
-	await using transformer = values.mode == "fast" ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
+	await using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const extension = `.${values.extension}`;
 	const files = await readdir(input, {recursive: values.recursive, withFileTypes: true});
