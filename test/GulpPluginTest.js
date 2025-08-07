@@ -1,9 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import {GulpPlugin} from "@cedx/php-minifier";
+import {GulpPlugin, TransformMode} from "@cedx/php-minifier";
 import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
-import {TransformMode} from "src/TransformMode.js";
 import File from "vinyl";
 
 /**
