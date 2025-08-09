@@ -13,7 +13,8 @@
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",
-		"plugin-error": "^2.0.1"
+		"plugin-error": "^2.0.1",
+		"vinyl": "^3.0.1"
 	},
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
@@ -22,8 +23,7 @@
 		"gulp": "^5.0.1",
 		"typedoc": "^0.28.9",
 		"typescript": "^5.9.2",
-		"typescript-eslint": "^8.39.0",
-		"vinyl": "^3.0.1"
+		"typescript-eslint": "^8.39.0"
 	},
 	"engines": {
 		"node": ">=24.0.0"
@@ -44,9 +44,6 @@
 		"minify",
 		"php"
 	],
-	"peerDependencies": {
-		"gulp": ">=5.0.0"
-	},
 	"publishConfig": {
 		"access": "public"
 	}
