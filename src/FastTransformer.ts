@@ -79,7 +79,7 @@ export class FastTransformer implements ITransformer {
 
 		const response = await fetch(url);
 		if (response.ok) return await response.text();
-		throw Error(`An error occurred while processing the script: ${file}`);
+		throw new Error(`An error occurred while processing the script: ${file}`);
 	}
 
 	/**
