@@ -19,7 +19,7 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^24.3.0",
+		"@types/node": "^24.3.1",
 		"gulp": "^5.0.1",
 		"typedoc": "^0.28.12",
 		"typescript": "^5.9.2",
