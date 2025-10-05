@@ -2,4 +2,4 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
-& node "$PSScriptRoot/lib/Program.js" @args
+. "$PSScriptRoot/tool/$($args.Count -eq 0 ? "Default" : $args[0]).ps1"

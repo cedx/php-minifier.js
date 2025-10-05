@@ -1,6 +1,10 @@
 name: continuous-integration
 on: push
 
+defaults:
+  run:
+    shell: pwsh
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -21,4 +25,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: npx gulp test
+        run: ./run.ps1 Test

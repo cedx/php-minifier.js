@@ -198,7 +198,7 @@ export default ts.config(
 		}
 	},
 	{
-		files: ["gulpfile.js", "example/*.js", "test/**/*.js"],
+		files: ["example/*.js", "test/**/*.js"],
 		rules: {
 			"prefer-arrow-callback": "off",
 			"@typescript-eslint/explicit-function-return-type": "off",
