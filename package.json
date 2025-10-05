@@ -19,6 +19,7 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/node": "^24.6.2",
+		"@types/vinyl": "^2.0.12",
 		"typedoc": "^0.28.13",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.45.0"
