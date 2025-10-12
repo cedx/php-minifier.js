@@ -77,7 +77,7 @@ try {
 	for (const file of files.filter(item => item.isFile() && extname(item.name) == extension)) {
 		const fullPath = join(file.parentPath, file.name);
 		const relativePath = relative(input, fullPath);
-		if (!values.silent) console.log(`Minifying: ${relativePath}`);
+		if (!values.quiet) console.log(`Minifying: ${relativePath}`);
 
 		const script = await transformer.transform(fullPath);
 		const target = join(output, relativePath);

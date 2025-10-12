@@ -16,7 +16,7 @@ export class GulpPlugin extends Transform {
 	/**
 	 * Value indicating whether to silence the plugin output.
 	 */
-	readonly #silent: boolean;
+	readonly #quiet: boolean;
 
 	/**
 	 * The instance used to process the PHP code.
@@ -31,7 +31,7 @@ export class GulpPlugin extends Transform {
 		super({objectMode: true});
 
 		const binary = options.binary ?? "php";
-		this.#silent = options.silent ?? false;
+		this.#quiet = options.quiet ?? false;
 		this.#transformer = (options.mode ?? TransformMode.Safe) == TransformMode.Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
 		const close = async (): Promise<void> => { await this.#transformer.close(); };
@@ -47,7 +47,7 @@ export class GulpPlugin extends Transform {
 	 */
 	override async _transform(file: File, encoding: BufferEncoding, done: TransformCallback): Promise<void> { // eslint-disable-line @typescript-eslint/no-misused-promises
 		try {
-			if (!this.#silent) log(`Minifying: ${file.relative}`);
+			if (!this.#quiet) log(`Minifying: ${file.relative}`);
 			file.contents = Buffer.from(await this.#transformer.transform(file.path), encoding);
 			done(null, file);
 		}
@@ -76,5 +76,5 @@ export type GulpPluginOptions = Partial<{
 	/**
 	 * Value indicating whether to silence the plugin output.
 	 */
-	silent: boolean;
+	quiet: boolean;
 }>;

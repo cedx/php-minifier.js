@@ -19,7 +19,7 @@ describe("GulpPlugin", () => {
 
 		describe("fast", () => {
 			const file = new File({path: resolve("res/Sample.php")});
-			const plugin = new GulpPlugin({mode: TransformMode.Fast, silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.Fast, quiet: true});
 			after(() => plugin.emit("end"));
 
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(file, "utf8", (error, /** @type {File} */ chunk) => {
@@ -30,7 +30,7 @@ describe("GulpPlugin", () => {
 
 		describe("safe", () => {
 			const file = new File({path: resolve("res/Sample.php")});
-			const plugin = new GulpPlugin({mode: TransformMode.Safe, silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.Safe, quiet: true});
 			after(() => plugin.emit("end"));
 
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(file, "utf8", (error, /** @type {File} */ chunk) => {
