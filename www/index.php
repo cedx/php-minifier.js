@@ -8,7 +8,7 @@ function main(array $query): void {
 	if (empty($query["file"])) throw new LogicException("Bad Request", 400);
 	$output = php_strip_whitespace($query["file"]);
 	if (!$output) throw new RuntimeException("Not Found", 404);
-	sendResponse($output, "application/x-php");
+	sendResponse($output, "text/x-php; charset=utf-8");
 }
 
 /**
@@ -31,5 +31,5 @@ try {
 }
 catch (Throwable $e) {
 	$code = $e->getCode();
-	sendResponse($e->getMessage(), "text/plain", $code >= 400 && $code < 600 ? $code : 500);
+	sendResponse($e->getMessage(), "text/plain; charset=utf-8", $code >= 400 && $code < 600 ? $code : 500);
 }
