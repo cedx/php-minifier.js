@@ -23,8 +23,8 @@ Options:
 	-b, --binary     The path to the PHP executable. Defaults to "php".
 	-e, --extension  The extension of the PHP files to process. Defaults to "php".
 	-m, --mode       The operation mode of the minifier. Defaults to "${TransformMode.Safe}".
-	-r, --recursive  Whether to process the input directory recursively.
-	-s, --silent     Whether to silence the minifier output.
+	-q, --quiet      Whether to silence the minifier output.
+	-r, --recurse    Whether to process the input directory recursively.
 	-h, --help       Display this help.
 	-v, --version    Output the version number.
 `;
@@ -39,8 +39,8 @@ try {
 		extension: {short: "e", type: "string", default: "php"},
 		help: {short: "h", type: "boolean", default: false},
 		mode: {short: "m", type: "string", default: TransformMode.Safe},
-		recursive: {short: "r", type: "boolean", default: false},
-		silent: {short: "s", type: "boolean", default: false},
+		quiet: {short: "q", type: "boolean", default: false},
+		recurse: {short: "r", type: "boolean", default: false},
 		version: {short: "v", type: "boolean", default: false}
 	}});
 
@@ -73,7 +73,7 @@ try {
 	await using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const extension = `.${values.extension}`;
-	const files = await readdir(input, {recursive: values.recursive, withFileTypes: true});
+	const files = await readdir(input, {recursive: values.recurse, withFileTypes: true});
 	for (const file of files.filter(item => item.isFile() && extname(item.name) == extension)) {
 		const fullPath = join(file.parentPath, file.name);
 		const relativePath = relative(input, fullPath);
