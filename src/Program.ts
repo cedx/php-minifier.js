@@ -16,7 +16,7 @@ Usage:
 	npx @cedx/php-minifier [options] <input> [output]
 
 Arguments:
-	input            The path to the input file or directory.
+	input            The path to the input directory.
 	output           The path to the output directory.
 
 Options:
