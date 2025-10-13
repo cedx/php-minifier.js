@@ -1,6 +1,7 @@
 import console from "node:console";
-import {access, mkdir, readdir, writeFile} from "node:fs/promises";
-import {dirname, extname, join, relative, resolve} from "node:path";
+import type {Stats} from "node:fs";
+import {mkdir, readdir, stat, writeFile} from "node:fs/promises";
+import {basename, dirname, extname, join, relative, resolve} from "node:path";
 import process from "node:process";
 import {parseArgs} from "node:util";
 import pkg from "../package.json" with {type: "json"};
@@ -16,7 +17,7 @@ Usage:
 	npx @cedx/php-minifier [options] <input> [output]
 
 Arguments:
-	input            The path to the input directory.
+	input            The path to the input file or directory.
 	output           The path to the output directory.
 
 Options:
@@ -62,9 +63,10 @@ try {
 	}
 
 	const input = resolve(positionals[0]);
-	try { await access(input); }
+	let stats: Stats;
+	try { stats = await stat(input); }
 	catch {
-		console.error("The input directory was not found.");
+		console.error("The input file or directory was not found.");
 		process.exit(404);
 	}
 
@@ -73,8 +75,11 @@ try {
 	await using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const extension = `.${values.extension}`;
-	const files = await readdir(input, {recursive: values.recurse, withFileTypes: true});
-	for (const file of files.filter(item => item.isFile() && extname(item.name) == extension)) {
+	const files = stats.isFile()
+		? [{parentPath: dirname(input), name: basename(input)}]
+		: (await readdir(input, {recursive: values.recurse, withFileTypes: true})).filter(item => item.isFile() && extname(item.name) == extension);
+
+	for (const file of files) {
 		const fullPath = join(file.parentPath, file.name);
 		const relativePath = relative(input, fullPath);
 		if (!values.quiet) console.log(`Minifying: ${relativePath}`);
