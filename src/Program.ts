@@ -76,7 +76,7 @@ try {
 
 	const extension = `.${values.extension}`;
 	const files = stats.isFile()
-		? [{parentPath: dirname(input), name: basename(input)}]
+		? [{isFile: () => true, name: basename(input), parentPath: dirname(input)}]
 		: (await readdir(input, {recursive: values.recurse, withFileTypes: true})).filter(item => item.isFile() && extname(item.name) == extension);
 
 	for (const file of files) {
