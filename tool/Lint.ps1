@@ -2,4 +2,4 @@
 Import-Module PSScriptAnalyzer
 Invoke-ScriptAnalyzer $PSScriptRoot -Recurse
 npx tsc --build tsconfig.json --noEmit
-npx eslint --cache --cache-location=var --config=etc/ESLint.js bin example src test
+npx eslint --cache --cache-location var --config etc/ESLint.js bin example src test
