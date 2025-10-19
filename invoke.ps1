@@ -1,5 +1,6 @@
 #!/usr/bin/env pwsh
+param ([Parameter(Position = 0)] [string] $Command = "Default")
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $true
-. $PSScriptRoot/tool/$($args.Count -eq 0 ? "Default" : $args[0]).ps1
+. $PSScriptRoot/tool/$Command.ps1
