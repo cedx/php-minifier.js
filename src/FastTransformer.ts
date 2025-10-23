@@ -37,14 +37,14 @@ export class FastTransformer implements ITransformer {
 	 * @returns Resolves when this object is finally disposed.
 	 */
 	[Symbol.asyncDispose](): Promise<void> {
-		return this.close();
+		return this.dispose();
 	}
 
 	/**
-	 * Closes this transformer.
-	 * @returns Resolves when the transformer has been closed.
+	 * Releases any resources associated with this object.
+	 * @returns Resolves when this object has been disposed.
 	 */
-	close(): Promise<void> {
+	dispose(): Promise<void> {
 		this.#process?.kill();
 		this.#process = null;
 		return Promise.resolve();

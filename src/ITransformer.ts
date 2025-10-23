@@ -4,10 +4,10 @@
 export interface ITransformer extends AsyncDisposable {
 
 	/**
-	 * Closes this transformer.
-	 * @returns Resolves when the transformer has been closed.
+	 * Releases any resources associated with this object.
+	 * @returns Resolves when this object has been disposed.
 	 */
-	close: () => Promise<void>;
+	dispose: () => Promise<void>;
 
 	/**
 	 * Processes a PHP script.

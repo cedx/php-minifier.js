@@ -6,12 +6,12 @@ import {after, describe, it} from "node:test";
  * Tests the features of the {@link FastTransformer} class.
  */
 describe("FastTransformer", () => {
-	describe("close()", () => {
+	describe("dispose()", () => {
 		it("should not reject, even if called several times", async () => {
 			const transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
-			await doesNotReject(transformer.close());
-			await doesNotReject(transformer.close());
+			await doesNotReject(transformer.dispose());
+			await doesNotReject(transformer.dispose());
 		});
 	});
 
@@ -32,7 +32,7 @@ describe("FastTransformer", () => {
 		]);
 
 		const transformer = new FastTransformer;
-		after(() => transformer.close());
+		after(() => transformer.dispose());
 
 		for (const [key, value] of map) it(key, async () => {
       const output = await transformer.transform("res/Sample.php");
