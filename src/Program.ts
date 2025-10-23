@@ -1,8 +1,8 @@
 import console from "node:console";
-import type {Stats} from "node:fs";
+import type {Dirent, Stats} from "node:fs";
 import {mkdir, readdir, stat, writeFile} from "node:fs/promises";
 import {basename, dirname, extname, join, relative, resolve} from "node:path";
-import process from "node:process";
+import {exit} from "node:process";
 import {parseArgs} from "node:util";
 import pkg from "../package.json" with {type: "json"};
 import {FastTransformer} from "./FastTransformer.js";
@@ -32,8 +32,6 @@ Options:
 
 // Start the application.
 try {
-	process.title = "PHP Minifier";
-
 	// Parse the command line arguments.
 	const {positionals, values} = parseArgs({allowPositionals: true, options: {
 		binary: {short: "b", type: "string", default: "php"},
@@ -48,40 +46,40 @@ try {
 	// Print the usage.
 	if (values.help) {
 		console.log(usage.trim().replaceAll("\t", "  "));
-		process.exit();
+		exit(0);
 	}
 
 	if (values.version) {
 		console.log(pkg.version);
-		process.exit();
+		exit(0);
 	}
 
 	// Check the requirements.
 	if (!positionals.length) {
 		console.error("You must provide the path to the input directory.");
-		process.exit(400);
+		exit(400);
 	}
 
 	const input = resolve(positionals[0]);
-	let stats: Stats;
+	let stats: Stats|null = null;
 	try { stats = await stat(input); }
 	catch {
 		console.error("The input file or directory was not found.");
-		process.exit(404);
+		exit(404);
 	}
 
 	// Process the PHP scripts.
-	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
 	await using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const extension = `.${values.extension}`;
 	const files = stats.isFile()
-		? [{isFile: () => true, name: basename(input), parentPath: dirname(input)}]
-		: (await readdir(input, {recursive: values.recurse, withFileTypes: true})).filter(item => item.isFile() && extname(item.name) == extension);
+		? [{name: basename(input), parentPath: dirname(input)} as Dirent]
+		: (await readdir(input, {recursive: values.recurse, withFileTypes: true})).filter(item => item.isFile() && extname(item.name).toLowerCase() == extension);
 
+	const output = positionals.length > 1 ? resolve(positionals[1]) : (stats.isFile() ? dirname(input) : input);
 	for (const file of files) {
 		const fullPath = join(file.parentPath, file.name);
-		const relativePath = relative(input, fullPath);
+		const relativePath = stats.isFile() ? file.name : relative(input, fullPath);
 		if (!values.quiet) console.log(`Minifying: ${relativePath}`);
 
 		const script = await transformer.transform(fullPath);
@@ -92,5 +90,5 @@ try {
 }
 catch (error) {
 	console.error(error instanceof Error ? error.message : error);
-	process.exit(500);
+	exit(500);
 }
