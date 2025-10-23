@@ -56,7 +56,7 @@ try {
 
 	// Check the requirements.
 	if (!positionals.length) {
-		console.error("You must provide the path to the input directory.");
+		console.error("You must provide the path to the input file or directory.");
 		exit(400);
 	}
 
