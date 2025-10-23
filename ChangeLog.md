@@ -1,5 +1,12 @@
 # Changelog
 
+## Version [8.0.0](https://github.com/cedx/php-minifier.js/compare/v7.2.0...v8.0.0)
+- Added support for a single input file.
+- Restored the `TransformMode` enumeration.
+- Breaking change: renamed the `--recursive` option to `--recurse`.
+- Breaking change: renamed the `--silent` option to `--quiet`.
+- Breaking change: renamed the `ITransformer.close()` method to `dispose()`.
+
 ## Version [7.2.0](https://github.com/cedx/php-minifier.js/compare/v7.1.0...v7.2.0)
 - Added the `--recursive` option to the command line interface.
 
