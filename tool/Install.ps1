@@ -1,3 +1,3 @@
 "Installing the dependencies..."
-Install-PSResource PSScriptAnalyzer -TrustRepository -WarningAction SilentlyContinue
+Install-PSResource -RequiredResourceFile PSModules.psd1 -TrustRepository -WarningAction SilentlyContinue
 npm install

@@ -1,3 +1,3 @@
 "Updating the dependencies..."
-Update-PSResource PSScriptAnalyzer -TrustRepository
+(Import-PowerShellDataFile PSModules.psd1).Keys | ForEach-Object { Update-PSResource $_ -TrustRepository }
 npm update
