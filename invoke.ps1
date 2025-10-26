@@ -11,12 +11,7 @@ param (
 	[switch] $Release
 )
 
-begin {
-	$ErrorActionPreference = "Stop"
-	$PSNativeCommandUseErrorActionPreference = $true
-	Set-StrictMode -Version Latest
-}
-
-end {
-	. $PSScriptRoot/tool/$Command.ps1
-}
+$ErrorActionPreference = "Stop"
+$PSNativeCommandUseErrorActionPreference = $true
+Set-StrictMode -Version Latest
+. $PSScriptRoot/tool/$Command.ps1
