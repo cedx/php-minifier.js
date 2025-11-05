@@ -1,8 +1,9 @@
 import js from "@eslint/js";
+import {defineConfig} from "eslint/config";
 import {join} from "node:path";
 import ts from "typescript-eslint";
 
-export default ts.config(
+export default defineConfig(
 	js.configs.recommended,
 	...ts.configs.strictTypeChecked,
 	...ts.configs.stylisticTypeChecked,
