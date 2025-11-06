@@ -25,4 +25,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: ./invoke.ps1 Test
+        run: ./Invoke.ps1 Test
