@@ -24,7 +24,7 @@
 		"gulp": "^5.0.1",
 		"typedoc": "^0.28.14",
 		"typescript": "^5.9.3",
-		"typescript-eslint": "^8.46.4"
+		"typescript-eslint": "^8.47.0"
 	},
 	"engines": {
 		"node": ">=24.0.0"
