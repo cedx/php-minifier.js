@@ -18,8 +18,8 @@
 		<File Path="ReadMe.md" />
 	</Folder>
 	<Folder Name="/Examples/">
-		<File Path="gulpfile.js" />
-		<File Path="TransformPhpFiles.js" />
+		<File Path="example/gulpfile.js" />
+		<File Path="example/TransformPhpFiles.js" />
 	</Folder>
 	<Folder Name="/Resources/">
 		<File Path="res/Sample.php" />
