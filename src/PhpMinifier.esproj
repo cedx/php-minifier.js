@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.3864779">
+	<PropertyGroup>
+		<PackageJsonDirectory>../</PackageJsonDirectory>
+		<ShouldRunBuildScript>false</ShouldRunBuildScript>
+		<ShouldRunNpmInstall>false</ShouldRunNpmInstall>
+	</PropertyGroup>
+</Project>
