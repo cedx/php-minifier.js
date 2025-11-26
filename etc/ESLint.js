@@ -1,6 +1,5 @@
 import js from "@eslint/js";
 import {defineConfig} from "eslint/config";
-import {join} from "node:path";
 import ts from "typescript-eslint";
 
 export default defineConfig(
@@ -9,10 +8,7 @@ export default defineConfig(
 	...ts.configs.stylisticTypeChecked,
 	{
 		languageOptions: {
-			parserOptions: {
-				project: "tsconfig.json",
-				tsconfigRootDir: join(import.meta.dirname, "..")
-			}
+			parserOptions: {project: true}
 		},
 		rules: {
 			"accessor-pairs": "error",
