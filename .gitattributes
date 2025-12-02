@@ -9,6 +9,7 @@
 *.esproj text
 *.html text diff=html
 *.http text
+*.ini text
 *.js text
 *.json text
 *.md text diff=markdown
