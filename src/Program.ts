@@ -11,7 +11,7 @@ import {TransformMode} from "./TransformMode.js";
 
 // The usage information.
 const usage = `
-Minify PHP source code by removing comments and whitespace.
+Remove comments and whitespace from PHP scripts.
 
 Usage:
 	npx @cedx/php-minifier [options] <input> [output]
