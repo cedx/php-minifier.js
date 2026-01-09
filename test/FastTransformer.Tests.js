@@ -24,7 +24,7 @@ describe("FastTransformer", () => {
 	});
 
 	describe("transform()", () => {
-		const map = new Map([
+		const patterns = new Map([
 			["should remove the inline comments", "<?= 'Hello World!' ?>"],
 			["should remove the multi-line comments", "namespace dummy; class Dummy"],
 			["should remove the single-line comments", "$className = get_class($this); return $className;"],
@@ -34,7 +34,7 @@ describe("FastTransformer", () => {
 		const transformer = new FastTransformer;
 		after(() => transformer.dispose());
 
-		for (const [key, value] of map) it(key, async () => {
+		for (const [key, value] of patterns) it(key, async () => {
       const output = await transformer.transform("res/Sample.php");
 			ok(output.includes(value));
     });
