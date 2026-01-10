@@ -3,6 +3,7 @@ import {GulpPlugin, type GulpPluginOptions} from "./GulpPlugin.js";
 export * from "./FastTransformer.js";
 export * from "./GulpPlugin.js";
 export type * from "./ITransformer.js";
+export * from "./PhpMinifier.js";
 export * from "./SafeTransformer.js";
 export * from "./TransformMode.js";
 
