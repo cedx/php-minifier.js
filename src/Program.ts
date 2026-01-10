@@ -69,7 +69,7 @@ try {
 	}
 
 	// Process the PHP scripts.
-	await using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
+	using transformer = values.mode == TransformMode.Fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const extension = `.${values.extension}`;
 	const files = stats.isFile()

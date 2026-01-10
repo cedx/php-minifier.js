@@ -28,19 +28,15 @@ export class SafeTransformer implements ITransformer {
 
 	/**
 	 * Releases any resources associated with this object.
-	 * @returns Resolves when this object is finally disposed.
 	 */
-	[Symbol.asyncDispose](): Promise<void> {
-		return this.dispose();
+	[Symbol.dispose](): void {
+		this.dispose();
 	}
 
 	/**
 	 * Releases any resources associated with this object.
-	 * @returns Resolves when this object has been disposed.
 	 */
-	dispose(): Promise<void> {
-		return Promise.resolve();
-	}
+	dispose(): void {}
 
 	/**
 	 * Processes a PHP script.

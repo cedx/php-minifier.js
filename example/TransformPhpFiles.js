@@ -6,7 +6,7 @@ import {env, loadEnvFile} from "node:process";
 
 // Choose an appropriate transformer.
 loadEnvFile();
-await using transformer = env.PHPMINIFIER_MODE == TransformMode.Fast ? new FastTransformer : new SafeTransformer;
+using transformer = env.PHPMINIFIER_MODE == TransformMode.Fast ? new FastTransformer : new SafeTransformer;
 
 // Scan the input directory for PHP files.
 const input = "path/to/source/folder";

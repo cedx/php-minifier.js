@@ -17,7 +17,7 @@ describe("FastTransformer", () => {
 
 	describe("listen()", () => {
 		it("should not reject, even if called several times", async () => {
-			await using transformer = new FastTransformer;
+			using transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
 			await doesNotReject(transformer.listen());
 		});
