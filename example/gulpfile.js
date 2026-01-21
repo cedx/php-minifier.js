@@ -8,7 +8,7 @@ export function compressPhp() {
 
 	/** @type {import("@cedx/php-minifier").GulpPluginOptions} */
 	const options = {
-		binary: isWindows ? "C:/Program Files/PHP/php.exe" : "/usr/bin/php",
+		binary: isWindows ? "C:\\Program Files\\PHP\\php.exe" : "/usr/bin/php",
 		mode: isWindows ? "safe" : "fast",
 		quiet: process.stdout.isTTY
 	};
