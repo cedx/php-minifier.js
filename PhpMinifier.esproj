@@ -5,11 +5,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="docs\**" />
-		<None Remove="lib\**" />
-		<None Remove="var\**" />
-		<TypeScriptConfiguration Remove="docs\**" />
-		<TypeScriptConfiguration Remove="lib\**" />
-		<TypeScriptConfiguration Remove="var\**" />
+		<None Remove="docs/**" />
+		<None Remove="lib/**" />
+		<None Remove="var/**" />
+		<TypeScriptConfiguration Remove="docs/**" />
+		<TypeScriptConfiguration Remove="lib/**" />
+		<TypeScriptConfiguration Remove="var/**" />
 	</ItemGroup>
 </Project>
