@@ -1,0 +1,6 @@
+<Solution>
+	<Project Path="PhpMinifier.esproj">
+		<Build />
+		<Deploy />
+	</Project>
+</Solution>
