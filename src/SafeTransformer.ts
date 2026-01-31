@@ -36,7 +36,9 @@ export class SafeTransformer implements ITransformer {
 	/**
 	 * Releases any resources associated with this object.
 	 */
-	dispose(): void {}
+	dispose(): void {
+		// Noop.
+	}
 
 	/**
 	 * Processes a PHP script.

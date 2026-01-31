@@ -34,8 +34,8 @@ export class GulpPlugin extends Transform {
 		this.#quiet = options.quiet ?? false;
 		this.#transformer = (options.mode ?? TransformMode.Safe) == TransformMode.Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
-		const dispose = async (): Promise<void> => { await this.#transformer.dispose(); };
-		this.on("end", dispose).on("error", dispose); // eslint-disable-line @typescript-eslint/no-misused-promises
+		const dispose = (): void => this.#transformer.dispose();
+		this.on("end", dispose).on("error", dispose);
 	}
 
 	/**

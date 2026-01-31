@@ -7,7 +7,7 @@ import {after, describe, it} from "node:test";
  */
 describe("FastTransformer", () => {
 	describe("dispose()", () => {
-		it("should not reject, even if called several times", async () => {
+		it("should not trigger any errors, even if called several times", async () => {
 			const transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
 			transformer.dispose();
@@ -16,7 +16,7 @@ describe("FastTransformer", () => {
 	});
 
 	describe("listen()", () => {
-		it("should not reject, even if called several times", async () => {
+		it("should not trigger any errors, even if called several times", async () => {
 			using transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
 			await doesNotReject(transformer.listen());

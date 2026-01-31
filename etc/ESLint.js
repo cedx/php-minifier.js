@@ -56,7 +56,7 @@ export default defineConfig(
 			"no-div-regex": "error",
 			"no-duplicate-imports": "error",
 			"no-else-return": "error",
-			"no-empty-function": "error",
+			"no-empty-function": "off",
 			"no-eq-null": "off",
 			"no-eval": "error",
 			"no-extend-native": "error",

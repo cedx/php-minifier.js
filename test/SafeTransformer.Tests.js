@@ -1,5 +1,5 @@
 import {SafeTransformer} from "@cedx/php-minifier";
-import {doesNotReject, ok} from "node:assert/strict";
+import {ok} from "node:assert/strict";
 import {after, describe, it} from "node:test";
 
 /**
@@ -7,7 +7,7 @@ import {after, describe, it} from "node:test";
  */
 describe("SafeTransformer", () => {
 	describe("dispose()", () => {
-		it("should not reject, even if called several times", async () => {
+		it("should not trigger any errors, even if called several times", () => {
 			const transformer = new SafeTransformer;
 			transformer.dispose();
 			transformer.dispose();
