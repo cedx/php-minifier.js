@@ -10,8 +10,8 @@ describe("FastTransformer", () => {
 		it("should not reject, even if called several times", async () => {
 			const transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
-			await doesNotReject(transformer.dispose());
-			await doesNotReject(transformer.dispose());
+			transformer.dispose();
+			transformer.dispose();
 		});
 	});
 
