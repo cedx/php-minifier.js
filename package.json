@@ -22,7 +22,7 @@
 		"@types/node": "^25.2.3",
 		"@types/vinyl": "^2.0.12",
 		"gulp": "^5.0.1",
-		"typedoc": "^0.28.16",
+		"typedoc": "^0.28.17",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.55.0"
 	},
