@@ -17,6 +17,7 @@
 		"vinyl": "^3.0.1"
 	},
 	"devDependencies": {
+		"@eslint/js": "^10.0.1",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^25.2.3",
