@@ -48,10 +48,5 @@
 	],
 	"publishConfig": {
 		"access": "public"
-	},
-	"scripts": {
-		"build": "pwsh Invoke.ps1 Build",
-		"clean": "pwsh Invoke.ps1 Clean",
-		"test": "pwsh Invoke.ps1 Test"
 	}
 }
