@@ -52,7 +52,7 @@ export class GulpPlugin extends Transform {
 			done(null, file);
 		}
 		catch (error) {
-			const failure = error instanceof Error ? error : String(error);
+			const failure = Error.isError(error) ? error : String(error);
 			done(new PluginError("@cedx/php-minifier", failure, {fileName: file.path}));
 		}
 	}
