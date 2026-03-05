@@ -1,5 +1,6 @@
 #!/usr/bin/env pwsh
 param (
+	# The name of the task to invoke.
 	[Parameter(Position = 0)]
 	[ArgumentCompleter({
 		param ($commandName, $parameterName, $wordToComplete)
