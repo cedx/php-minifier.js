@@ -10,11 +10,10 @@
 		"noImplicitOverride": true,
 		"outDir": "../lib",
 		"resolveJsonModule": true,
-		"rootDir": ".",
 		"skipLibCheck": true,
-		"strict": true,
 		"target": "ESNext",
 		"tsBuildInfoFile": "../var/tsbuildinfo.json",
+		"types": ["fancy-log", "node", "vinyl"],
 		"verbatimModuleSyntax": true
 	}
 }

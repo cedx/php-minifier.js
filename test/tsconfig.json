@@ -6,9 +6,8 @@
 		"module": "NodeNext",
 		"noEmit": true,
 		"resolveJsonModule": true,
-		"rootDir": ".",
 		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext"
+		"target": "ESNext",
+		"types": ["node", "vinyl"]
 	}
 }
