@@ -1,3 +1,3 @@
 @{
-	PSScriptAnalyzer = @{}
+	PSScriptAnalyzer = @{ repository = "PSGallery" }
 }
