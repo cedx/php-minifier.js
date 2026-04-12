@@ -23,6 +23,6 @@ jobs:
           extensions: curl, intl, mbstring, simplexml
           php-version: latest
       - name: Install dependencies
-        run: npm ci
+        run: ./Invoke.ps1 Install
       - name: Run tests
-        run: npm test
+        run: ./Invoke.ps1 Test
