@@ -1,2 +1,4 @@
+using module ./Cmdlets.psm1
+
 "Watching for file changes..."
-npx tsc --build src/tsconfig.json --preserveWatchOutput --sourceMap --watch
+Invoke-TypeScript "$PSScriptRoot/../src/tsconfig.json" -SourceMap -Watch

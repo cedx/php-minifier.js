@@ -1,2 +1,4 @@
+using module ./Cmdlets.psm1
+
 "Building the project..."
-npx tsc --build src/tsconfig.json
+Invoke-TypeScript "$PSScriptRoot/../src/tsconfig.json"
