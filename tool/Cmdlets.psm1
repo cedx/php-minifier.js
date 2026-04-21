@@ -38,7 +38,7 @@ function Invoke-ESLint {
 .SYNOPSIS
 	Invokes the Node.js test runner.
 #>
-function Invoke-NodeTesting {
+function Invoke-NodeTest {
 	node --enable-source-maps --test
 }
 
