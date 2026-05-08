@@ -124,7 +124,7 @@ function Test-PSResourceUpdate {
 
 		$url = "https://www.powershellgallery.com/packages/$($InputObject.Name)"
 		$response = Invoke-WebRequest $url -Method Head -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction Ignore
-		$latestVersion = [version] (Split-Path $response.Headers.Location -Leaf)
+		$latestVersion = [semver] (Split-Path $response.Headers.Location -Leaf)
 
 		$module = [pscustomobject]@{ ModuleName = $InputObject.Name; CurrentVersion = $InputObject.Version; LatestVersion = $latestVersion }
 		if ($module.LatestVersion -gt $module.CurrentVersion) { $module }
