@@ -14,7 +14,6 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          cache: npm
           node-version: latest
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
