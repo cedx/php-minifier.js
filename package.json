@@ -20,11 +20,11 @@
 		"@eslint/js": "^10.0.1",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^25.6.2",
+		"@types/node": "^25.7.0",
 		"@types/vinyl": "^2.0.12",
 		"gulp": "^5.0.1",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.59.2"
+		"typescript-eslint": "^8.59.3"
 	},
 	"engines": {
 		"node": ">=26.0.0"
