@@ -3,12 +3,12 @@ Minify [PHP](https://www.php.net) source code by removing comments and whitespac
 Based on the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function.
 
 ## Documentation
-- [User guide](https://github.com/cedx/php-minifier.js/tree/main/docs)
-- [Examples](https://github.com/cedx/php-minifier.js/tree/main/example)
+- [User guide](https://github.com/CedX/PhpMinifier.js/tree/main/docs)
+- [Examples](https://github.com/CedX/PhpMinifier.js/tree/main/example)
 
 ## Development
-- [Git repository](https://github.com/cedx/php-minifier.js)
-- [Submit an issue](https://github.com/cedx/php-minifier.js/issues)
+- [Git repository](https://github.com/CedX/PhpMinifier.js)
+- [Submit an issue](https://github.com/CedX/PhpMinifier.js/issues)
 
 ## License
-[PHP Minifier](https://github.com/cedx/php-minifier.js) is distributed under the MIT License.
+[PHP Minifier](https://github.com/CedX/PhpMinifier.js) is distributed under the MIT License.
